@@ -2,5 +2,5 @@
 WebContent/META-INF
 WebContent/WEB-INF
 build
-src/com/inc/encrypt
+/src/com/inc/encrypt
 !.gitignore
