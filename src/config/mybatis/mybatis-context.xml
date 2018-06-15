@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<typeAliases>
+	<package name="com.inc.vo"/>
+</typeAliases> <!-- mapper에 vo패키지에 별칭을 주는 태그 -->
+  <environments default="development"> <!-- 개발용, 배포용, 테스트용을 나누기 위한 태그 -->
+    <environment id="development"> <!-- emvironment: 환경설정 -->
+      <transactionManager type="JDBC"/> <!-- 기본설정을 따르겠다. -->
+      <dataSource type="JNDI"> <!-- JNDI를 사용할거고 즉, context.xml을 사용하겠다는 뜻-->
+      	<property name="data_source" 
+      			  value = "java:comp/env/jdbc/oracle_xe"/> <!-- DataSource의 값 -->
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+  	<mapper resource="config/mybatis/signup.xml"/>
+  	<mapper resource="config/mybatis/login.xml"/>
+  	<mapper resource="config/mybatis/visit.xml"/>
+  	<mapper resource="config/mybatis/photo.xml"/>
+  </mappers>
+</configuration>

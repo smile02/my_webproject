@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="photo">
+	<select id="photoSelectList" resultMap="photoMap">
+		select * from photo order by regdate desc
+	</select>
+	
+	<resultMap type="photoVo" id="photoMap">
+		<association select="selectList"
+					column="u_id"
+					javaType="signupVo"
+					 property="svo"/>
+	</resultMap>
+	
+	<select id="selectList" parameterType="String" resultType="signupVo">
+		select * from users
+			where id = #{value}
+	</select>
+	
+	<insert id="photoInsert" parameterType="photoVo">
+		insert into photo
+			values (seq_photo_id.nextval,
+					#{u_id},
+					#{content},
+					#{uri},
+					systimestamp,
+					0,
+					0
+					)
+	</insert>
+	<delete id="photoDelete" parameterType="int">
+		delete from photo
+			where id = #{value}
+	</delete>
+	
+	<update id="good" parameterType="int">
+		update photo set good = good+1
+			where id = #{value}
+	</update>
+	
+	<update id="bad" parameterType="int">
+		update photo set bad = bad+1
+			where id = #{value}
+	</update>
+</mapper>

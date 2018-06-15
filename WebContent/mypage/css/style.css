@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.main-picture{
+	width:150px;
+	height:80px;
+}
+.main-font{
+	font-size: 30pt;
+	vertical-align: middle;
+}
+
+.main-btn>button{
+	margin-right:40px;
+	width:100px;
+}
+.signup-btn>button{
+	margin-right:40px;
+}
+.login-btn>button{
+	margin-right:20px;
+}
